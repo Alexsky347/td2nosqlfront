@@ -1,10 +1,9 @@
-
+<div class="text-center mb-5">
+  <h1>Vos trains</h1>
+  <p>Visualisez, modifiez ou supprimez les trains</p>
+  <button class="btn btn-success" (click)="redirectToCreate()">Ajouter train</button>
+</div>
 <div class="content">
-
-  <div class="text-center mb-5">
-    <h1>Vos trains</h1>
-    <p>Visualisez, modifiez ou supprimez les trains</p>
-  </div>
   <div *ngIf="dataSource" >
     <div fxLayout fxLayoutAlign="center center">
       <mat-form-field fxFlex="40%">

@@ -8,3 +8,10 @@ th.mat-header-cell {
   text-align: left;
   max-width: 300px;
 }
+
+.content{
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

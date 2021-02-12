@@ -56,6 +56,11 @@ export class ListComponent implements OnInit, AfterViewInit  {
     this.router.navigate([url]);
   }
 
+  public redirectToCreate = () => {
+    const url = `/add`;
+    this.router.navigate([url]);
+
+  }
   public redirectToUpdate = (id: string) => {
     const url = `/edit/${id}`;
     this.router.navigate([url]);
