@@ -1,0 +1,27 @@
+<div class="content">
+  <section  fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+      <mat-card-title>Détails du produit</mat-card-title>
+      <mat-card-content>
+        <div fxLayout="column wrap" fxLayoutGap="40px">
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>Id:</strong></div>
+            <div fxFlex>{{product?.numTrain}}</div>
+          </div>
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>villeDepart:</strong></div>
+            <div fxFlex>{{product?.villeDepart}}</div>
+          </div>
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>villeArrivee:</strong></div>
+            <div fxFlex>{{product?.villeArrivee}}</div>
+          </div>
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>heureDepart:</strong></div>
+            <div fxFlex>{{product?.heureDepart}}</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>

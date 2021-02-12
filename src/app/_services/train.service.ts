@@ -12,7 +12,7 @@ export class TrainService {
 
   private headers = {
     headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': '*'
     })
   };
 

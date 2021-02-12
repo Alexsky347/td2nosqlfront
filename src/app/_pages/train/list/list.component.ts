@@ -40,7 +40,7 @@ export class ListComponent implements OnInit, AfterViewInit  {
   public getAll = () => {
     this.trainService.getAll()
       .subscribe(res => {
-          this.dataSource.data = res as Train[];
+        this.dataSource.data = res as Train[];
         },
         (error) => {
           this.errorService.handleError(error);
@@ -52,11 +52,13 @@ export class ListComponent implements OnInit, AfterViewInit  {
   }
 
   public redirectToDetails = (id: string) => {
-    const url = `/train/details/${id}`;
+    const url = `/details/${id}`;
     this.router.navigate([url]);
   }
 
   public redirectToUpdate = (id: string) => {
+    const url = `/edit/${id}`;
+    this.router.navigate([url]);
 
   }
 
