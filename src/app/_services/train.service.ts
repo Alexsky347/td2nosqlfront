@@ -9,13 +9,10 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class TrainService {
-
-  private headers = {
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*'
-    })
-  };
-
+  private httpOptions = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  });
   private uri = '/train';
 
   constructor(
@@ -34,8 +31,20 @@ export class TrainService {
     return this.http.delete(`${environment.apiUrl + this.uri}/delete/${id}`);
   }
 
-  private editTrain = (train: Train, id: any) => {
-    return this.http.put(`${environment.apiUrl + this.uri}/edit/${id}`, train);
+
+  public editTrain(train: Train, id: string): Observable<Train>{
+    return this.http.put<Train>(`${environment.apiUrl + this.uri}/edit/${id}`, train, {
+      headers: this.httpOptions
+    });
   }
 
+  getTrain(id: string): Observable<Train> {
+    return this.http.get<Train>(`${environment.apiUrl + this.uri}/one/${id}`);
+  }
+
+  public addTrain(train: Train): Observable<Train>{
+    return this.http.post<Train>(`${environment.apiUrl + this.uri}/add`, train, {
+      headers: this.httpOptions
+    });
+  }
 }

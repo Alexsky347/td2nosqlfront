@@ -6,6 +6,7 @@ import {MaterialModule} from '../../_modules/material/material.module';
 import { TrainDetailsComponent } from './train-details/train-details.component';
 import { TrainAddComponent } from './train-add/train-add.component';
 import { TrainEditComponent } from './train-edit/train-edit.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { TrainEditComponent } from './train-edit/train-edit.component';
   imports: [
     CommonModule,
     TrainRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class TrainModule { }
