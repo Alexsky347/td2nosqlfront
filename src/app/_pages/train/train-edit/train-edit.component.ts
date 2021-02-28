@@ -4,6 +4,7 @@ import {TrainService} from '../../../_services';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ErrorHandlerService} from '../../../_services/error-handler.service';
 import {FormBuilder} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-train-edit',
@@ -22,7 +23,7 @@ export  class TrainEditComponent implements OnInit {
   @Input() public owner: Train;
   public selectOptions = [{name: 'Show', value: 'show'}, {name: `Don't Show`, value: ''}];
   @Output() selectEmitt = new EventEmitter();
-  constructor(private trainService: TrainService, private router: Router,
+  constructor(private trainService: TrainService, private router: Router, private toastr: ToastrService,
               private errorHandler: ErrorHandlerService, private activeRoute: ActivatedRoute, protected fb: FormBuilder) { }
   ngOnInit(): void {
     this.getTrain();
@@ -72,9 +73,14 @@ export  class TrainEditComponent implements OnInit {
   validateForm(): void {
     this.trainService.editTrain(this.getTrainFromControl(), this.train.numTrain).subscribe(
       data => {
-        console.log('train modifié:', data);
+          this.toastr.success('Train modifié', 'Succès');
+          setTimeout(() => {
+          this.router.navigateByUrl('/');
+        }, 1000);
+          console.log('train modifié:', data);
       },
       error => {
+        this.toastr.error('Train non modifié', 'Erreur');
         console.log('train non modifié', error);
       }
     );
