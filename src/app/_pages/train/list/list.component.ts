@@ -70,7 +70,10 @@ export class ListComponent implements OnInit, AfterViewInit  {
   public redirectToDelete = (id: string) => {
     this.trainService.deleteTrain(id)
       .pipe(first())
-      .subscribe(() => this.dataSource.data = this.dataSource.data.filter(x => x.numTrain !== id));
+      .subscribe((resp) => {
+        console.log('ok: ', resp);
+        this.dataSource.data = this.dataSource.data.filter(x => x.numTrain !== id);
+      });
   }
 
 }
