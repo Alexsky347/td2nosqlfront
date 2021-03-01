@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TrainModule} from './_pages/train/train.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MaterialModule,
     HttpClientModule,
     TrainModule,
-    NgbModule
+    NgbModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
