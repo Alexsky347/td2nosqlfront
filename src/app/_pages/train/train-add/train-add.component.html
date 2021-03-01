@@ -23,7 +23,7 @@
       <td>
         <label>Ville d'arrivée</label>
         <input matInput class="form-control" placeholder="Ville d'arrivée"
-               id="villeArrivee" formControlName="villeArrivee" required
+               id="villeArrivee" formControlName="villeArrivee" required type="text"
         />
 
       </td>
@@ -32,7 +32,15 @@
       <td>
         <label>Heure de Depart</label>
         <input matInput class="form-control" placeholder="Heure de Depart"
-               id="heureDepart" formControlName="heureDepart" required
+               id="heureDepart" formControlName="heureDepart" required type="number" min="1"
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Nombre de places</label>
+        <input matInput class="form-control" placeholder="Nombre de places"
+               id="places" formControlName="places" required type="number" min="1"
         />
       </td>
     </tr>

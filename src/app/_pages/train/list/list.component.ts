@@ -15,7 +15,7 @@ import {Train} from '../../../_models';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit, AfterViewInit  {
-  public displayedColumns = ['numTrain', 'villeDepart', 'villeArrivee', 'heureDepart', 'details', 'update', 'delete'];
+  public displayedColumns = ['numTrain', 'villeDepart', 'villeArrivee', 'heureDepart', 'places', 'details', 'update', 'delete'];
   public dataSource = new MatTableDataSource<Train>();
 
   @ViewChild(MatSort) sort: MatSort;

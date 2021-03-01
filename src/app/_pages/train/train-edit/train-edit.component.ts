@@ -17,7 +17,8 @@ export  class TrainEditComponent implements OnInit {
     numTrain : [''],
     villeDepart : [''],
     villeArrivee : [''],
-    heureDepart : ['']
+    heureDepart : [''],
+    places : ['']
   });
   public showAccounts;
   @Input() public owner: Train;
@@ -56,6 +57,9 @@ export  class TrainEditComponent implements OnInit {
     if (this.trainForm.get('heureDepart')){
       this.trainForm.get('heureDepart').setValue(this.train.heureDepart);
     }
+    if (this.trainForm.get('places')){
+      this.trainForm.get('places').setValue(this.train.places);
+    }
   }
   protected getTrainFromControl(): Train {
     return {
@@ -63,7 +67,8 @@ export  class TrainEditComponent implements OnInit {
       numTrain: this.trainForm.get('numTrain').value,
       villeDepart: this.trainForm.get('villeDepart').value,
       villeArrivee: this.trainForm.get('villeArrivee').value,
-      heureDepart: this.trainForm.get('heureDepart').value
+      heureDepart: this.trainForm.get('heureDepart').value,
+      places: this.trainForm.get('places').value
     };
   }
 

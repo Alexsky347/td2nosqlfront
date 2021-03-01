@@ -17,7 +17,8 @@ export class TrainAddComponent implements OnInit {
     numTrain : [''],
     villeDepart : [''],
     villeArrivee : [''],
-    heureDepart : ['']
+    heureDepart : [''],
+    places : [''],
   });
   constructor(private trainService: TrainService, private router: Router, private toastr: ToastrService,
               private errorHandler: ErrorHandlerService, private activeRoute: ActivatedRoute, protected fb: FormBuilder) { }
@@ -31,7 +32,8 @@ export class TrainAddComponent implements OnInit {
       numTrain: this.trainForm.get('numTrain').value,
       villeDepart: this.trainForm.get('villeDepart').value,
       villeArrivee: this.trainForm.get('villeArrivee').value,
-      heureDepart: this.trainForm.get('heureDepart').value
+      heureDepart: this.trainForm.get('heureDepart').value,
+      places: this.trainForm.get('places').value
     };
   }
   onSubmitForm(): void{
