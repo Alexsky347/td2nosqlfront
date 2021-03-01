@@ -28,7 +28,9 @@ export class TrainService {
   }
 
   public deleteTrain = (id: any) => {
-    return this.http.delete(`${environment.apiUrl + this.uri}/delete/${id}`);
+    return this.http.delete(`${environment.apiUrl + this.uri}/delete/${id}`,{
+      headers: this.httpOptions
+    });
   }
 
 
