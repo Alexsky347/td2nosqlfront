@@ -1,0 +1,41 @@
+<h2 class="text-center">Reserver une ou plusieurs places</h2>
+<form
+  [formGroup]="bookTrainForm"
+  (ngSubmit)="onSubmitForm()">
+  <table class="user-full-width" >
+    <tr>
+      <td>
+        <label>Numero de réservation</label>
+        <input matInput class="form-control" placeholder="Numero de réservation"
+               id="bookNumber" formControlName="bookNumber" required
+        />
+      </td>
+      <td>
+        <mat-form-field appearance="fill">
+          <mat-label>Train</mat-label>
+          <select matNativeControl required formControlName="currentTrain">
+            <option *ngFor="let trains of train" [ngValue]="trains">
+              {{ trains.numTrain }}
+            </option>
+          </select>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <table class="user-full-width">
+    <tr>
+      <td>
+        <label>Nombre de place que vous souhaitez réserver</label>
+        <input matInput class="form-control" placeholder="Nombre de place que vous souhaitez réserver"
+               id="numberPlaces" formControlName="numberPlaces" required type="text"
+        />
+
+      </td>
+    </tr>
+  </table>
+  <div style="display:flex; justify-content:flex-end;">
+    <button type="submit" mat-stroked-button color="primary">
+      Valider
+    </button>
+  </div>
+</form>

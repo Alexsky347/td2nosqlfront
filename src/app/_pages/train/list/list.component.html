@@ -3,6 +3,12 @@
   <p>Visualisez, modifiez ou supprimez les trains</p>
   <button class="btn btn-success" (click)="redirectToCreate()">Ajouter train</button>
 </div>
+<div class="text-center mb-10">
+  <p>Reserver une ou plusieurs places, voir les réservations en cours, supprimer des réservations</p>
+  <button class="btn btn-info" (click)="redirectToCreateReservation()">Réserver une ou plusieurs places</button>
+  <br/><br/>
+  <button class="btn btn-warning" (click)="redirectToListReservation()">Réservations en cours</button>
+</div>
 <div class="content">
   <div *ngIf="dataSource" >
     <div fxLayout fxLayoutAlign="center center">

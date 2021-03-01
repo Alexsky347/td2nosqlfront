@@ -76,4 +76,14 @@ export class ListComponent implements OnInit, AfterViewInit  {
       });
   }
 
+  public redirectToCreateReservation = () => {
+    const url = `/addReservation`;
+    this.router.navigate([url]);
+  }
+
+  public redirectToListReservation = () => {
+    const url = `/listReservation`;
+    this.router.navigate([url]);
+  }
+
 }

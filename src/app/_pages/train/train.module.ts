@@ -7,11 +7,13 @@ import { TrainDetailsComponent } from './train-details/train-details.component';
 import { TrainAddComponent } from './train-add/train-add.component';
 import { TrainEditComponent } from './train-edit/train-edit.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ReservationComponent } from './reservation/reservation.component';
+import { ReservationListComponent } from './reservation-list/reservation-list.component';
 
 
 
 @NgModule({
-  declarations: [ListComponent, TrainDetailsComponent, TrainAddComponent, TrainEditComponent],
+  declarations: [ListComponent, TrainDetailsComponent, TrainAddComponent, TrainEditComponent, ReservationComponent, ReservationListComponent],
   imports: [
     CommonModule,
     TrainRoutingModule,
