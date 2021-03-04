@@ -7,6 +7,7 @@ import {BookTrain} from '../../../_models';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {first} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-reservation-list',
@@ -18,6 +19,7 @@ export class ReservationListComponent implements OnInit, AfterViewInit {
   public dataSource = new MatTableDataSource<BookTrain>();
   constructor(
     private bookTrainService: BookTrainService,
+    private toastr: ToastrService,
     private errorService: ErrorHandlerService,
     private router: Router
   ) { }
@@ -50,6 +52,10 @@ export class ReservationListComponent implements OnInit, AfterViewInit {
       .subscribe((resp) => {
         console.log('ok: ', resp);
         this.dataSource.data = this.dataSource.data.filter(x => x.bookNumber !== id);
+        this.toastr.success('Reservation suppriméee', 'Succès');
+        setTimeout(() => {
+          this.router.navigateByUrl('/listReservation');
+        }, 1000);
       });
   }
 }
