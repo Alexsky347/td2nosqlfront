@@ -1,0 +1,37 @@
+<h2 class="text-center">Ajout d'une citation</h2>
+<form
+  [formGroup]="citationForm"
+  (ngSubmit)="onSubmitForm()">
+  <table class="user-full-width">
+    <tr>
+      <td>
+        <label>Auteur</label>
+        <input matInput class="form-control" placeholder="auteur"
+               id="author" formControlName="author" required
+        />
+      </td>
+      <td>
+        <label>Titre</label>
+        <input matInput class="form-control" placeholder="titre"
+               id="title" formControlName="title" required
+        />
+      </td>
+    </tr>
+  </table>
+  <table class="user-full-width">
+    <tr>
+      <td>
+        <label></label>
+        <input matInput class="form-control" placeholder="Ville d'arrivée"
+               id="villeArrivee" formControlName="villeArrivee" required type="text"
+        />
+
+      </td>
+    </tr>
+  </table>
+  <div style="display:flex;">
+    <button type="submit" mat-stroked-button color="primary">
+      Valider
+    </button>
+  </div>
+</form>

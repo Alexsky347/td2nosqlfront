@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from './_services/account.service';
-import {TranslateService} from '@ngx-translate/core';
 import {User} from './_models/user';
 
 @Component({

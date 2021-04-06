@@ -1,55 +1,18 @@
-<div class="content">
-  <section fxLayout="column" fxFlexAlign="stretch" class="text-center mt-3">
-    <h1>Bienvenue dans votre partie administrateur</h1>
-    <p>Ici une grande partie de ce qui se passe sur votre site est paramétrable ou analysable</p>
+<div class="space-around space-text" >
+  <h2 class="underline">Liste des citations</h2>
 
-
-    <div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
-      <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="33%" >
-        <a mat-list-item routerLink="">
-          <mat-card class="mat-elevation-z4" >
-            <mat-card-header>
-              <mat-card-title>Ventes</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="">
-            <mat-card-content>
-              <p>
-                Analyse des résultats
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </a>
-      </div>
-      <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="33%" >
-        <a mat-list-item routerLink="">
-          <mat-card class="mat-elevation-z4" >
-            <mat-card-header>
-              <mat-card-title>Vues</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="">
-            <mat-card-content>
-              <p>
-                Analyse des résultats
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </a>
-      </div>
-      <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="33%" >
-        <a mat-list-item routerLink="">
-          <mat-card class="mat-elevation-z4" >
-            <mat-card-header>
-              <mat-card-title>Fréquentation</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src="">
-            <mat-card-content>
-              <p>
-                Analyse des résultats
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </a>
-      </div>
+  <mat-list *ngFor="let citations of citation">
+    <div *ngIf="citations.author !== ''">
+    « {{citations.description}}. »
+    <p class="space-text"><strong>{{citations.author}}</strong>,  <span class="underline">{{citations.title}},</span>
+      <span> {{citations.dateCitation}}</span>
+    </p>
     </div>
-  </section>
+    <div *ngIf="citations.author == ''">
+      « {{citations.description}}. »
+      <p class="space-text"><span class="underline">{{citations.title}},</span>
+        <span> {{citations.dateCitation}}</span>
+      </p>
+    </div>
+  </mat-list>
 </div>

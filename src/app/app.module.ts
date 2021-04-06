@@ -17,6 +17,7 @@ import { HomeComponent } from './_pages/home/home.component';
 import {ErrorInterceptor, JwtInterceptor} from './_helpers';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { CreateCitationComponent } from './_pages/create-citation/create-citation.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     NotFoundComponent,
     ServerErrorComponent,
     HomeComponent,
+    CreateCitationComponent,
 
   ],
   imports: [
