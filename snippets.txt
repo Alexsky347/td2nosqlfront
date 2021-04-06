@@ -1,0 +1,7 @@
+###sdk okta
+npm i @okta/okta-signin-widget
+npm i @okta/okta-angular
+
+npm install @ngx-translate/http-loader --save
+npm install @ngx-translate/core --save
+npm i @angular/flex-layout

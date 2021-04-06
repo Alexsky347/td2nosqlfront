@@ -1,6 +1,18 @@
-<header></header>
-<div class="app-container container">
+<div class="app-container" [ngClass]="{ 'bg-light': user }">
+  <app-layout>
+    <router-outlet></router-outlet>
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav role="navigation" mode="side" [opened]="screenWidth > 640 && isUser" >
+        <!--this is a place for us to add side-nav code-->
+        <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <!--in here all the content must reside. We will add a navigation header as well-->
+        <app-header *ngIf="user" (sidenavToggle)="sidenav.toggle()"></app-header>
         <main>
           <router-outlet></router-outlet>
         </main>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </app-layout>
 </div>

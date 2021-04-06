@@ -20,9 +20,10 @@
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false
   },
+  "baseUrl": "src",
   "paths": {
-    "@app/*": ["src/app/*"],
-    "@environments/*": ["src/environments/*"]
+    "@app/*": ["app/*"],
+    "@environments/*": ["environments/*"]
   }
 
 }
