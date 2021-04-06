@@ -16,6 +16,7 @@ import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 export class HomeComponent implements OnInit, AfterViewInit {
   user: User;
   citation: any;
+  searchText;
   myControl = new FormControl();
   constructor(
     private accountService: AccountService,

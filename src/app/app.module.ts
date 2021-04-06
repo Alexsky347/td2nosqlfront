@@ -15,9 +15,12 @@ import {SidenavListComponent} from './_components/navigation/sidenav-list/sidena
 import {HeaderComponent} from './_components/navigation/header/header.component';
 import { HomeComponent } from './_pages/home/home.component';
 import {ErrorInterceptor, JwtInterceptor} from './_helpers';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { CreateCitationComponent } from './_pages/create-citation/create-citation.component';
+
+// search module
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { CreateCitationComponent } from './_pages/create-citation/create-citatio
     FlexLayoutModule,
     HttpClientModule,
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
