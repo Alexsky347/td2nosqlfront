@@ -10,9 +10,12 @@ import {Citation} from '../_models/citation';
   providedIn: 'root'
 })
 export class CitationService {
-  private httpOptions = new HttpHeaders({
-    'Access-Control-Allow-Origin': '*'
-  });
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+    withCredentials: true,
+  };
   private uri = '/articles';
 
   constructor(
@@ -24,23 +27,14 @@ export class CitationService {
   }
   // deleteAll
   public deleteCitations = (id: any) => {
-    return this.http.delete(`${environment.apiUrl + this.uri}`, {
-      headers: this.httpOptions
-    });
+    return this.http.delete(`${environment.apiUrl + this.uri}`, this.httpOptions);
   }
 
   getCitation(id: string): Observable<Train> {
     return this.http.get<Train>(`${environment.apiUrl + this.uri}/${id}`);
   }
 
-  public addCitation(citation: Citation, authToken): Observable<Citation>{
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      Authorization: `Bearer ${authToken}`
-    });
-    return this.http.post<Citation>(`${environment.apiUrl + this.uri}`, citation, {
-      headers: this.httpOptions
-    });
+  public addCitation(citation: Citation): Observable<Citation>{
+    return this.http.post<Citation>(`${environment.apiUrl}/add_article`, citation);
   }
 }

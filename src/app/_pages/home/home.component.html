@@ -5,18 +5,22 @@
     <input class="form-control" type="text" name="search" [(ngModel)]="searchText"
            autocomplete="off" placeholder="&#61442;  Vous pouvez chercher un auteur ou contenu en particulier">
   </div>
-  <mat-list *ngFor="let citations of citation | filter:searchText">
-    <div *ngIf="citations.author !== ''">
-    « {{citations.description}}. »
-    <p class="space-text"><strong>{{citations.author}}</strong>,  <span class="underline">{{citations.title}},</span>
-      <span> {{citations.dateCitation}}</span>
-    </p>
-    </div>
-    <div *ngIf="citations.author == ''">
+  <mat-list >
+    <mat-list-item *ngFor="let citations of citation | filter:searchText">
+
+      <div *ngIf="citations.author !== ''">
       « {{citations.description}}. »
-      <p class="space-text"><span class="underline">{{citations.title}},</span>
+      <p class="space-text"><strong>{{citations.author}}</strong>,  <span class="underline">{{citations.title}},</span>
         <span> {{citations.dateCitation}}</span>
       </p>
-    </div>
+      </div>
+
+      <div *ngIf="citations.author == ''">
+        « {{citations.description}}. »
+        <p class="space-text"><span class="underline">{{citations.title}},</span>
+          <span> {{citations.dateCitation}}</span>
+        </p>
+      </div>
+    </mat-list-item>
   </mat-list>
 </div>

@@ -7,6 +7,7 @@ export const environment = {
   apiUrl: 'http://localhost:8080/api',
   publicApiUrl: [
     {url: 'http://localhost:8080/api/articles', method: 'GET'},
+    {url: 'http://localhost:8080/api/register', method: 'POST'},
   ]
 };
 

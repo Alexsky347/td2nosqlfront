@@ -2,9 +2,6 @@
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <h2>Création compte</h2>
-      <mat-error *ngIf="loginInvalid">
-        Identifiants non reconnus
-      </mat-error>
       <mat-form-field class="full-width-input">
         <input matInput type="text" placeholder="Utilisateur" formControlName="username" required/>
         <mat-error>

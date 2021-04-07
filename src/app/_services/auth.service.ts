@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,8 @@ export class AuthService {
   public user: Observable<User>;
   public isAuthenticated = new BehaviorSubject<boolean>(false);
   private httpOptions = new HttpHeaders({
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json'
   });
 
   constructor(
@@ -36,13 +37,15 @@ export class AuthService {
     return this.isAuthenticated;
   }
   public register = (username, password) => {
-    return this.http.post(`${environment.apiUrl}/users`, { username, password });
+    return this.http.post(`${environment.apiUrl}/register`,
+      { username, password },
+      );
   }
 
   public login = (username, password) => {
     return this.http.post<User>(`${environment.apiUrl}/login`,
-      { username, password },
-      {headers: this.httpOptions})
+      { username, password }
+      )
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));

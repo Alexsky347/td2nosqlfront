@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {environment} from '../../environments/environment';
-import {AuthService} from "../_services/auth.service";
+import {AuthService} from '../_services/auth.service';
 
 
 @Injectable()
@@ -25,14 +25,13 @@ export class JwtInterceptor implements HttpInterceptor {
           }
         }
 
-        if (isLoggedIn && isApiUrl && !isPublicUrl && !methodPublic) {
+        if (isLoggedIn && isApiUrl && !methodPublic) {
             request = request.clone({
                 setHeaders: {
                     Authorization: `Bearer ${user['token']}`
                 }
             });
         }
-
         return next.handle(request);
     }
 }

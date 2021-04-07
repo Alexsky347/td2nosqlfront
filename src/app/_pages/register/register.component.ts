@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthService} from "../../_services/auth.service";
-import {User} from "../../_models/user";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../../_services/auth.service';
+import {first} from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,6 @@ import {User} from "../../_models/user";
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
-  public loginInvalid = false;
   private formSubmitAttempt = false;
   private readonly returnUrl: string;
 
@@ -21,36 +21,47 @@ export class RegisterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
+    private toastrService: ToastrService,
   ) {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+  }
 
+  async ngOnInit(): Promise<void> {
     this.form = this.fb.group({
       username: '',
       email: ['', Validators.email],
       password: ''
     });
+    this.authService.isAuthenticated.subscribe((result) => {
+      if (result){
+        this.router.navigate([this.returnUrl]);
+      }
+    });
   }
-
-  async ngOnInit(): Promise<void> {
-    // if (await this.authService.checkAuthenticated()) {
-    //   await this.router.navigate([this.returnUrl]);
-    // }
-  }
+  get f() { return this.form.controls; }
 
   async onSubmit(): Promise<void> {
-    console.log('ta mereeeeeeeeeeee');
     this.formSubmitAttempt = false;
-    if (this.form.valid) {
-      try {
-        const username = this.form.get('username')?.value;
-        const password = this.form.get('password')?.value;
-        await this.authService.register(username, password);
-      } catch (err) {
-        this.loginInvalid = true;
-      }
-    } else {
+
+    // stop here if form is invalid
+    if (this.form.invalid) {
       this.formSubmitAttempt = true;
+      return;
     }
+
+    this.authService.register(this.f.username.value, this.f.password.value)
+      .pipe(first())
+      .subscribe({
+        next: () => {
+          this.toastrService.success('Votre compte a été créé', 'Bienveue');
+          // get return url from query parameters or default to home pag
+          this.router.navigateByUrl('/login');
+        },
+        error: error => {
+          console.log('rr => ', error);
+          this.toastrService.error(error, 'Erreur');
+        }
+      });
   }
 
 }

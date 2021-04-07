@@ -39,8 +39,7 @@ export class CreateCitationComponent implements OnInit {
     this.validateForm();
   }
   validateForm(): void {
-    const authToken = localStorage.getItem('token');
-    this.citaionService.addCitation(this.getCitationFromControl(), authToken).subscribe(
+    this.citaionService.addCitation(this.getCitationFromControl()).subscribe(
       data => {
         this.toastr.success('Citation ajouté', 'Succès');
         setTimeout(() => {

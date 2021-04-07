@@ -12,6 +12,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  isLogged = false;
   submitted = false;
   public loginInvalid = false;
   private formSubmitAttempt = false;
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
 
   }
   // convenience getter for easy access to form fields
+  // tslint:disable-next-line:typedef
   get f() { return this.form.controls; }
 
   async ngOnInit(): Promise<void> {
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.authService.isAuthenticated.subscribe((result) => this.isLogged = result);
   }
 
   async onSubmit(): Promise<void> {
@@ -52,7 +55,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
-          this.toastrService.success('Vous êtes connecté', 'Bienveue');
+          this.toastrService.success('Vous êtes connecté', 'Bienvenue');
           // get return url from query parameters or default to home pag
           this.router.navigateByUrl('/');
         },

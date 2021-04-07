@@ -20,7 +20,7 @@
       <button mat-raised-button color="primary" type="submit" >Connexion</button>
     </form>
   </mat-card-content>
-    <a mat-list-item routerLink="/register">
+    <a *ngIf="!isLogged" mat-list-item routerLink="/register">
       <span class="nav-caption">Créer un compte</span>
     </a>
 </mat-card>
