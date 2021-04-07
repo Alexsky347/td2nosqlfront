@@ -1,9 +1,9 @@
 <mat-card>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <h2>Connexion</h2>
+      <h2>Création compte</h2>
       <mat-error *ngIf="loginInvalid">
-       Identifiants non reconnus
+        Identifiants non reconnus
       </mat-error>
       <mat-form-field class="full-width-input">
         <input matInput type="text" placeholder="Utilisateur" formControlName="username" required/>
@@ -17,10 +17,7 @@
           Fournissez un mot de passe valide
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" >Connexion</button>
+      <button mat-raised-button color="primary" type="submit" >Enregistrer</button>
     </form>
   </mat-card-content>
-    <a mat-list-item routerLink="/register">
-      <span class="nav-caption">Créer un compte</span>
-    </a>
 </mat-card>

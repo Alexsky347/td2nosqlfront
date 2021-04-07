@@ -1,30 +1,14 @@
 <mat-nav-list>
   <mat-toolbar color="primary" id="header">
-<!--    <button mat-icon-button><mat-icon>menu</mat-icon></button>-->
+    <button mat-icon-button><mat-icon>menu</mat-icon></button>
   </mat-toolbar>
   <br>
   <hr>
   <a mat-list-item routerLink="/" (click)="onSidenavClose()">
-    <mat-icon>dashboard</mat-icon> <span class="nav-caption">Tableau de bord</span>
+    <mat-icon>home</mat-icon> <span class="nav-caption">Acueil</span>
   </a>
-  <a mat-list-item routerLink="/products" (click)="onSidenavClose()">
-      <mat-icon>store</mat-icon><span class="nav-caption">Produits</span>
+  <a mat-list-item routerLink="/login" (click)="onSidenavClose()">
+      <mat-icon>login</mat-icon><span class="nav-caption">Login</span>
   </a>
-  <a mat-list-item routerLink="/offers" (click)="onSidenavClose()">
-      <mat-icon>local_offer</mat-icon><span class="nav-caption">Offres</span>
-  </a>
-  <a mat-list-item routerLink="/users" (click)="onSidenavClose()">
-      <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Utilisateurs</span>
-  </a>
-  <a mat-list-item routerLink="/stripe" (click)="onSidenavClose()">
-      <mat-icon>monetization_on</mat-icon> <span class="nav-caption">Clés Stripe</span>
-  </a>
-  <mat-list-item [matMenuTriggerFor]="menu">
-    <mat-icon>unfold_more</mat-icon>
-    <a matline>Example</a>
-  </mat-list-item>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="onSidenavClose()">View profile</button>
-    <button mat-menu-item (click)="onSidenavClose()">Add contact</button>
-  </mat-menu>
+
 </mat-nav-list>

@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import {AuthService} from '../../_services/auth.service';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "../../_services/auth.service";
+import {User} from "../../_models/user";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
+
   form: FormGroup;
   public loginInvalid = false;
   private formSubmitAttempt = false;
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
 
     this.form = this.fb.group({
       username: '',
+      email: ['', Validators.email],
       password: ''
     });
   }
@@ -36,13 +39,12 @@ export class LoginComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     console.log('ta mereeeeeeeeeeee');
-    this.loginInvalid = false;
     this.formSubmitAttempt = false;
     if (this.form.valid) {
       try {
         const username = this.form.get('username')?.value;
         const password = this.form.get('password')?.value;
-        await this.authService.login(username, password);
+        await this.authService.register(username, password);
       } catch (err) {
         this.loginInvalid = true;
       }
@@ -50,4 +52,5 @@ export class LoginComponent implements OnInit {
       this.formSubmitAttempt = true;
     }
   }
+
 }

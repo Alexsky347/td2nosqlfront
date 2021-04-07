@@ -5,11 +5,13 @@ import {ServerErrorComponent} from './_components/error-pages/server-error/serve
 import {LoginComponent} from './_pages/login/login.component';
 import {HomeComponent} from './_pages/home/home.component';
 import {CreateCitationComponent} from './_pages/create-citation/create-citation.component';
+import {RegisterComponent} from './_pages/register/register.component';
 
 const homeModule = () => import('./_pages/home/home.module').then(x => x.HomeModule);
 const routes: Routes = [
    { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'add', component: CreateCitationComponent},
   { path: '404', component: NotFoundComponent},
   { path: '500', component: ServerErrorComponent },
@@ -17,7 +19,7 @@ const routes: Routes = [
   // otherwise redirect to home
   // { path: '**', redirectTo: '', pathMatch: 'full' },
   { path: '', redirectTo: '/', pathMatch: 'full' },
-  // { path: '**', redirectTo: '/404', pathMatch: 'full'}
+  { path: '**', redirectTo: '/404', pathMatch: 'full'}
 
 ];
 

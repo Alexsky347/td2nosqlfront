@@ -21,6 +21,7 @@ import { CreateCitationComponent } from './_pages/create-citation/create-citatio
 
 // search module
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RegisterComponent } from './_pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ServerErrorComponent,
     HomeComponent,
     CreateCitationComponent,
+    RegisterComponent,
 
   ],
   imports: [

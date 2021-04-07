@@ -1,21 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from './_services/account.service';
 import {User} from './_models/user';
+import {AuthService} from "./_services/auth.service";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
   title = 'front';
   user: User;
   screenWidth: number;
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
-  isUser = false;
+  isUser = true;
 
-  constructor(private accountService: AccountService) {
-    this.accountService.user.subscribe(x => this.user = x);
+  constructor(private authService: AuthService) {
+    this.authService.user.subscribe(x => this.user = x);
     this.screenWidth = window.innerWidth;
     window.onresize = () => {
       // set screenWidth on screen size change
@@ -23,10 +22,10 @@ export class AppComponent implements OnInit{
     };
   }
   ngOnInit(): void {
-    this.user ? this.isUser = true : this.isUser = false;
+    // this.user ? this.isUser = true : this.isUser = false;
   }
 
   logout = () => {
-    this.accountService.logout();
+    this.authService.logout();
   }
 }

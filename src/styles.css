@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+a { cursor: pointer; }
+
+.content{
+  min-height: 80vh;
+}
+
+.app-container {
+  min-height: 320px;
+  overflow: hidden;
+  /*height: 100%;*/
+}
+
+.btn-delete-user {
+  width: 40px;
+  text-align: center;
+  box-sizing: content-box;
+}
+html, body { height: 100%; margin: 0;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+section div p{
+  color: #3f51b5;
+  font-size: 30px;
+  text-shadow: 2px 3px 5px grey;
+  margin: 30px 0;
+}
+section div + p{
+  color: #3f51b5;
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+mat-tab-group {
+  text-align: center;
+}
+
+mat-tab-group p {
+  padding-top: 20px;
+}
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+  height: 100%;
+  min-height: 320px;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+main {
+  padding: 10px;
+}
+
