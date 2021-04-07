@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../_models/user';
 import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {map} from 'rxjs/operators';
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,15 @@ export class AuthService {
 
   userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
-
   public isAuthenticated = new BehaviorSubject<boolean>(false);
+  private httpOptions = new HttpHeaders({
+    'Access-Control-Allow-Origin': '*'
+  });
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastrService: ToastrService,
   ) {
     this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.user = this.userSubject.asObservable();
@@ -36,10 +40,10 @@ export class AuthService {
   }
 
   public login = (username, password) => {
-    console.warn('herrreree');
-    return this.http.post<User>(`${environment.apiUrl}/login`, { username, password })
+    return this.http.post<User>(`${environment.apiUrl}/login`,
+      { username, password },
+      {headers: this.httpOptions})
       .pipe(map(user => {
-        console.log(user);
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
@@ -54,6 +58,7 @@ export class AuthService {
     localStorage.removeItem('user');
     this.userSubject.next(null);
     this.isAuthenticated.next(false);
+    this.toastrService.warning('Vous êtes déconnecté', 'Bye');
     this.router.navigate(['/']);
   }
 

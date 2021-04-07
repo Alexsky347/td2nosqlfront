@@ -7,14 +7,20 @@ import {AuthService} from '../../../_services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isLogged = false;
+
   @Output() public sidenavToggle = new EventEmitter();
-  constructor(private authService: AuthService) { }
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.authService.isAuthenticated.subscribe((result) => this.isLogged = result);
   }
+
   public logout = () => {
     this.authService.logout();
   }
+
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
   }

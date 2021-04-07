@@ -8,7 +8,7 @@
       </mat-sidenav>
       <mat-sidenav-content>
         <!--in here all the content must reside. We will add a navigation header as well-->
-        <app-header *ngIf="user" (sidenavToggle)="sidenav.toggle()"></app-header>
+        <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
         <main>
           <router-outlet></router-outlet>
         </main>

@@ -12,11 +12,18 @@
               <a routerLink="/users"><span class="material-icons" title="Compte">account_circle</span></a>
           </li>
           <li>
-            <a class="nav-item nav-link" (click)="logout()" title="Déconnexion"><span class="material-icons">login</span></a>
+            <a routerLink="/add"><span class="material-icons" title="add_citation">Poster une citation</span></a>
           </li>
-        <li>
-          <a routerLink="/add"><span class="material-icons" title="add_citation">Poster une citation</span></a>
-        </li>
+          <li *ngIf="isLogged else notLogged">
+            <a (click)="logout()" title="Déconnexion"><span class="material-icons text-danger">logout</span></a>
+          </li>
+          <ng-template #notLogged>
+            <li>
+              <a routerLink="/login" title="Connexion"><span class="material-icons text-success">login</span></a>
+            </li>
+          </ng-template>
+
+
       </ul>
   </div>
 </mat-toolbar>
