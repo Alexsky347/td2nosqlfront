@@ -5,6 +5,7 @@ import {CitationService} from '../../_services';
 import {Router} from '@angular/router';
 import {Citation} from '../../_models/citation';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {first} from "rxjs/operators";
 
 
 
@@ -40,5 +41,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
         (error) => {
           console.log(error.message);
         });
+  }
+  public delete = (id: number) => {
+    console.log("tamererer");
+    this.citationService.delete(id).pipe(first())
+      .subscribe(() => this.citation = this.citation.filter(x => x.id !== id));
+
   }
 }

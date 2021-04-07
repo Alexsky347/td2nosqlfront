@@ -11,7 +11,8 @@ import {Citation} from '../_models/citation';
 export class CitationService {
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin':'*'
     }),
     withCredentials: true,
   };
@@ -24,9 +25,9 @@ export class CitationService {
   public getAll = () => {
     return this.http.get(`${environment.apiUrl + this.uri}`);
   }
-  // deleteAll
-  public deleteCitations = (id: any) => {
-    return this.http.delete(`${environment.apiUrl + this.uri}`, this.httpOptions);
+
+  public delete = (id: any) => {
+    return this.http.delete(`${environment.apiUrl}/del_article/${id}`);
   }
 
   getCitation(id: string): Observable<Citation> {
