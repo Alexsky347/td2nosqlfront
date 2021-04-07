@@ -6,6 +6,7 @@ import {LoginComponent} from './_pages/login/login.component';
 import {HomeComponent} from './_pages/home/home.component';
 import {CreateCitationComponent} from './_pages/create-citation/create-citation.component';
 import {RegisterComponent} from './_pages/register/register.component';
+import {DetailCitationComponent} from './_pages/detail-citation/detail-citation.component';
 
 const homeModule = () => import('./_pages/home/home.module').then(x => x.HomeModule);
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'add', component: CreateCitationComponent},
+  { path: 'detail-citation/:id', component: DetailCitationComponent},
   { path: '404', component: NotFoundComponent},
   { path: '500', component: ServerErrorComponent },
 

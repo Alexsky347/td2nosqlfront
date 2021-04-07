@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
-import {Train} from '../_models';
 import {environment} from '../../environments/environment';
 import {Citation} from '../_models/citation';
 
@@ -30,8 +29,8 @@ export class CitationService {
     return this.http.delete(`${environment.apiUrl + this.uri}`, this.httpOptions);
   }
 
-  getCitation(id: string): Observable<Train> {
-    return this.http.get<Train>(`${environment.apiUrl + this.uri}/${id}`);
+  getCitation(id: string): Observable<Citation> {
+    return this.http.get<Citation>(`${environment.apiUrl + this.uri}/${id}`);
   }
 
   public addCitation(citation: Citation): Observable<Citation>{
