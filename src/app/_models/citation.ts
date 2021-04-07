@@ -5,5 +5,4 @@ export interface Citation {
   description: string;
   author: string;
   dateCitation: number;
-  user: User;
 }

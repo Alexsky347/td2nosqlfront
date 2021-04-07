@@ -32,15 +32,15 @@ export class CreateCitationComponent implements OnInit {
       author: this.citationForm.get('author').value,
       title: this.citationForm.get('title').value,
       description: this.citationForm.get('description').value,
-      dateCitation: this.citationForm.get('dateCitation').value,
-      user: this.citationForm.get('username').value
+      dateCitation: this.citationForm.get('dateCitation').value
     };
   }
   onSubmitForm(): void{
     this.validateForm();
   }
   validateForm(): void {
-    this.citaionService.addCitation(this.getCitationFromControl()).subscribe(
+    const authToken = localStorage.getItem('token');
+    this.citaionService.addCitation(this.getCitationFromControl(), authToken).subscribe(
       data => {
         this.toastr.success('Citation ajouté', 'Succès');
         setTimeout(() => {

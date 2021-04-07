@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     console.log('ta mereeeeeeeeeeee');
     this.loginInvalid = false;
     this.formSubmitAttempt = false;
+    console.log(this.form.get('username')?.value);
     if (this.form.valid) {
       try {
         const username = this.form.get('username')?.value;

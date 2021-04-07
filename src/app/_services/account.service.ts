@@ -22,8 +22,8 @@ export class AccountService {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
 
-    public getById = (id: string) => {
-        return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+    public getUser = () => {
+        return this.http.get<User>(`${environment.apiUrl}/user`);
     }
 
     public update = (id, params) => {
